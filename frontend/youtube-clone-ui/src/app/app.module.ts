@@ -12,12 +12,19 @@ import {MatButtonModule} from "@angular/material/button";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
+import { SaveVideoDetailsComponent } from './save-video-details/save-video-details.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadVideoComponent,
-    HeaderComponent
+    HeaderComponent,
+    SaveVideoDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,12 @@ import {MatIconModule} from "@angular/material/icon";
     NgxFileDropModule,
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
