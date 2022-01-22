@@ -28,6 +28,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "./node_modules/@videogular/ngx-videogular/fonts/videogular.css",
               "src/styles.css"
             ],
             "scripts": []
