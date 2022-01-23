@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {ActivatedRoute} from "@angular/router";
+import {VideoService} from "../video.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-save-video-details',
   templateUrl: './save-video-details.component.html',
   styleUrls: ['./save-video-details.component.css']
 })
-export class SaveVideoDetailsComponent implements OnInit {
+export class SaveVideoDetailsComponent {
 
   saveVideoDetailsForm: FormGroup;
   title: FormControl = new FormControl('');
@@ -19,16 +22,20 @@ export class SaveVideoDetailsComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   tags: string[] = [];
+  selectedFile!: File;
+  selectedFileName = '';
+  videoId = '';
+  fileSelected = false;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
+              private matSnackBar: MatSnackBar) {
+    this.videoId = this.activatedRoute.snapshot.params.videoId;
     this.saveVideoDetailsForm = new FormGroup({
       title: this.title,
       description: this.description,
       videoStatus: this.videoStatus,
     })
   }
-
-  ngOnInit(): void {}
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -50,4 +57,18 @@ export class SaveVideoDetailsComponent implements OnInit {
     }
   }
 
+  onFileSelected(event: Event) {
+    // @ts-ignore
+    this.selectedFile = event.target.files[0];
+    this.selectedFileName = this.selectedFile.name;
+    this.fileSelected = true;
+  }
+
+  onUpload() {
+    this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
+      .subscribe(() => {
+        // show an upload success notification.
+        this.matSnackBar.open("Thumbnail Upload Successful", "OK");
+      })
+  }
 }

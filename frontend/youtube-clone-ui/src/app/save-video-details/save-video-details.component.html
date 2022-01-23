@@ -46,6 +46,24 @@
         </mat-form-field>
       </div>
       <div>
+        <label for="inputGroupFile01">Upload Thumbnail:
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                   aria-describedby="inputGroupFileAddon01" (change)="onFileSelected($event)">
+          </div>
+          <br/>
+          <div *ngIf="fileSelected">
+            <div>
+              <p>Selected File: {{selectedFileName}}</p>
+            </div>
+            <div>
+              <button mat-raised-button color="primary" type="submit" (click)="onUpload()">Upload</button>
+            </div>
+          </div>
+          <br>
+        </label>
+      </div>
+      <div>
         <button type="submit" mat-raised-button color="primary">Save</button>
       </div>
 
