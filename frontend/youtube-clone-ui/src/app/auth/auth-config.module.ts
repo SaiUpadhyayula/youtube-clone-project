@@ -7,11 +7,15 @@ import {AuthModule} from 'angular-auth-oidc-client';
     config: {
       authority: 'https://programmingtechie.eu.auth0.com',
       redirectUrl: window.location.origin,
-      clientId: 'p1M5laciMpSQr6Eg0XghX57jIoSYsUtj',
+      clientId: '<your-client-id>',
       scope: 'openid profile offline_access',
       responseType: 'code',
       silentRenew: true,
-      useRefreshToken: true
+      useRefreshToken: true,
+      secureRoutes: ['http://localhost:8080/'],
+      customParamsAuthRequest: {
+        audience: 'http://localhost:8080/',
+      },
     }
   })],
   providers: [],
