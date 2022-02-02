@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {OidcSecurityService} from "angular-auth-oidc-client";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isAuthenticated: boolean = false;
 
-  ngOnInit(): void {
+  constructor(private oidcSecurityService: OidcSecurityService) {
   }
 
+  ngOnInit(): void {
+    this.oidcSecurityService.isAuthenticated$.subscribe(({isAuthenticated}) => {
+      this.isAuthenticated = isAuthenticated;
+    })
+  }
+
+  login() {
+    this.oidcSecurityService.authorize();
+  }
+
+  logOff() {
+    this.oidcSecurityService.logoffAndRevokeTokens();
+  }
 }
