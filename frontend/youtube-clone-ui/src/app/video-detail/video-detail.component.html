@@ -1,0 +1,19 @@
+<div fxLayout="row">
+  <div fxFlex="65%" class="video-detail">
+    <app-video-player *ngIf="videoAvailable" [videoUrl]="videoUrl"></app-video-player>
+    <div class="mat-title">{{videoTitle}}</div>
+    <div fxLayout="row">
+      <div fxFlex="50%">
+        <div>3rd Feb 2022</div>
+        <div>{{videoDescription}}</div>
+      </div>
+      <div fxFlex="50%">
+
+      </div>
+    </div>
+  </div>
+  <div fxFlex="5%"></div>
+  <div fxFlex="30%">
+    Suggestions Bar
+  </div>
+</div>
