@@ -60,16 +60,15 @@ public class VideoService {
     public VideoDto getVideoDetails(String videoId) {
         Video savedVideo = getVideoById(videoId);
 
-        VideoDto videoDto = new VideoDto();
-        videoDto.setVideoUrl(savedVideo.getVideoUrl());
-        videoDto.setThumbnailUrl(savedVideo.getThumbnailUrl());
-        videoDto.setId(savedVideo.getId());
-        videoDto.setTitle(savedVideo.getTitle());
-        videoDto.setDescription(savedVideo.getDescription());
-        videoDto.setTags(savedVideo.getTags());
-        videoDto.setVideoStatus(savedVideo.getVideoStatus());
+        increaseVideoCount(savedVideo);
+        userService.addVideoToHistory(videoId);
 
-        return videoDto;
+        return mapToVideoDto(savedVideo);
+    }
+
+    private void increaseVideoCount(Video savedVideo) {
+        savedVideo.incrementViewCount();
+        videoRepository.save(savedVideo);
     }
 
     public VideoDto likeVideo(String videoId) {
@@ -90,18 +89,7 @@ public class VideoService {
 
         videoRepository.save(videoById);
 
-        VideoDto videoDto = new VideoDto();
-        videoDto.setVideoUrl(videoById.getVideoUrl());
-        videoDto.setThumbnailUrl(videoById.getThumbnailUrl());
-        videoDto.setId(videoById.getId());
-        videoDto.setTitle(videoById.getTitle());
-        videoDto.setDescription(videoById.getDescription());
-        videoDto.setTags(videoById.getTags());
-        videoDto.setVideoStatus(videoById.getVideoStatus());
-        videoDto.setLikeCount(videoById.getLikes().get());
-        videoDto.setDislikeCount(videoById.getDisLikes().get());
-
-        return videoDto;
+        return mapToVideoDto(videoById);
     }
 
     public VideoDto disLikeVideo(String videoId) {
@@ -122,6 +110,10 @@ public class VideoService {
 
         videoRepository.save(videoById);
 
+        return mapToVideoDto(videoById);
+    }
+
+    private VideoDto mapToVideoDto(Video videoById) {
         VideoDto videoDto = new VideoDto();
         videoDto.setVideoUrl(videoById.getVideoUrl());
         videoDto.setThumbnailUrl(videoById.getThumbnailUrl());
@@ -132,7 +124,7 @@ public class VideoService {
         videoDto.setVideoStatus(videoById.getVideoStatus());
         videoDto.setLikeCount(videoById.getLikes().get());
         videoDto.setDislikeCount(videoById.getDisLikes().get());
-
+        videoDto.setViewCount(videoById.getViewCount().get());
         return videoDto;
     }
 }

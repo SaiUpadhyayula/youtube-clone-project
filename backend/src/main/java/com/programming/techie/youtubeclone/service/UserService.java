@@ -1,6 +1,7 @@
 package com.programming.techie.youtubeclone.service;
 
 import com.programming.techie.youtubeclone.model.User;
+import com.programming.techie.youtubeclone.model.Video;
 import com.programming.techie.youtubeclone.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,6 +50,12 @@ public class UserService {
     public void addToDisLikedVideos(String videoId) {
         User currentUser = getCurrentUser();
         currentUser.addToDislikedVideos(videoId);
+        userRepository.save(currentUser);
+    }
+
+    public void addVideoToHistory(String videoId) {
+        User currentUser = getCurrentUser();
+        currentUser.addToVideoHistory(videoId);
         userRepository.save(currentUser);
     }
 }
