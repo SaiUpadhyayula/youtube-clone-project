@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Document(value = "User")
 @Data
@@ -25,6 +26,22 @@ public class User {
     private Set<String> subscribedToUsers;
     private Set<String> subscribers;
     private List<String> videoHistory;
-    private Set<String> likedVideos;
-    private Set<String> disLikedVideos;
+    private Set<String> likedVideos = ConcurrentHashMap.newKeySet();
+    private Set<String> disLikedVideos = ConcurrentHashMap.newKeySet();
+
+    public void addToLikeVideos(String videoId) {
+        likedVideos.add(videoId);
+    }
+
+    public void removeFromLikedVideos(String videoId) {
+        likedVideos.remove(videoId);
+    }
+
+    public void removeFromDislikedVideos(String videoId) {
+        disLikedVideos.remove(videoId);
+    }
+
+    public void addToDislikedVideos(String videoId) {
+        disLikedVideos.add(videoId);
+    }
 }

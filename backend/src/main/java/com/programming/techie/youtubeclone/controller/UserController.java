@@ -20,6 +20,6 @@ public class UserController {
         Jwt jwt = (Jwt) authentication.getPrincipal();
 
         userRegistrationService.registerUser(jwt.getTokenValue());
-        return "User Registration successfull";
+        return "User Registration successful";
     }
 }
