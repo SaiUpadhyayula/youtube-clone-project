@@ -3,8 +3,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {UploadVideoComponent} from "./upload-video/upload-video.component";
 import {SaveVideoDetailsComponent} from "./save-video-details/save-video-details.component";
 import {VideoDetailComponent} from "./video-detail/video-detail.component";
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
+  {
+    path: '', component: HomeComponent,
+  },
   {
     path: 'upload-video', component: UploadVideoComponent,
   },
