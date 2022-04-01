@@ -2,3 +2,16 @@
   margin-top: 50px;
   margin-left: 100px;
 }
+
+.seperator {
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  background-color: black;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.view-count {
+
+}

@@ -88,7 +88,10 @@ export class SaveVideoDetailsComponent {
       "tags": this.tags,
       "videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
       "videoUrl": this.videoUrl,
-      "thumbnailUrl": this.thumbnailUrl
+      "thumbnailUrl": this.thumbnailUrl,
+      "likeCount": 0,
+      "dislikeCount": 0,
+      "viewCount": 0
     }
     this.videoService.saveVideo(videoMetaData).subscribe(data => {
       this.matSnackBar.open("Video Metadata Updated successfully", "OK");

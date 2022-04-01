@@ -34,6 +34,10 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { LikedVideosComponent } from './liked-videos/liked-videos.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import { FeaturedComponent } from './featured/featured.component';
+import { VideoCardComponent } from './video-card/video-card.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -47,33 +51,37 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     HistoryComponent,
     SubscriptionsComponent,
     LikedVideosComponent,
-    SidebarComponent
+    SidebarComponent,
+    FeaturedComponent,
+    VideoCardComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientModule,
-        NgxFileDropModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatIconModule,
-        FlexLayoutModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatOptionModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatChipsModule,
-        VgCoreModule,
-        VgControlsModule,
-        VgOverlayPlayModule,
-        VgBufferingModule,
-        MatSnackBarModule,
-        AuthConfigModule,
-        MatSidenavModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    NgxFileDropModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
+    MatSnackBarModule,
+    AuthConfigModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule
+  ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
