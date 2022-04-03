@@ -38,6 +38,9 @@ import {MatListModule} from "@angular/material/list";
 import { FeaturedComponent } from './featured/featured.component';
 import { VideoCardComponent } from './video-card/video-card.component';
 import {MatCardModule} from "@angular/material/card";
+import { CallbackComponent } from './callback/callback.component';
+import { CommentsComponent } from './comments/comments.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -53,35 +56,38 @@ import {MatCardModule} from "@angular/material/card";
     LikedVideosComponent,
     SidebarComponent,
     FeaturedComponent,
-    VideoCardComponent
+    VideoCardComponent,
+    CallbackComponent,
+    CommentsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    NgxFileDropModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    FlexLayoutModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatChipsModule,
-    VgCoreModule,
-    VgControlsModule,
-    VgOverlayPlayModule,
-    VgBufferingModule,
-    MatSnackBarModule,
-    AuthConfigModule,
-    MatSidenavModule,
-    MatListModule,
-    MatCardModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        NgxFileDropModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+        FlexLayoutModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatOptionModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatChipsModule,
+        VgCoreModule,
+        VgControlsModule,
+        VgOverlayPlayModule,
+        VgBufferingModule,
+        MatSnackBarModule,
+        AuthConfigModule,
+        MatSidenavModule,
+        MatListModule,
+        MatCardModule,
+        MatMenuModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
